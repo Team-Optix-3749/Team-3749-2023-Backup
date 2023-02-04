@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 
 public class Extend extends CommandBase {
     private final Elevator m_elevator;
+    
 
     public Extend(Elevator elevator) {
         m_elevator = elevator;

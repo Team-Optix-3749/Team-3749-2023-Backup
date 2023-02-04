@@ -6,6 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.commands.Detract;
+import frc.robot.commands.Extend;
+import frc.robot.subsystems.Elevator;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
 
@@ -18,6 +21,8 @@ public class RobotContainer {
   private final POV pilotPOV = new POV(pilot);
   private final POV operatorPOV = new POV(operator);
 
+  Elevator elevator; 
+
   // Subsystems
 
   // Commands
@@ -29,7 +34,10 @@ public class RobotContainer {
 
   private void configureDefaultCommands() {}
 
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    pilot.a().whileTrue(new Extend(elevator));
+    pilot.b().whileTrue(new Detract(elevator));
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
