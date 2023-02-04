@@ -10,10 +10,11 @@ public final class Constants {
     public static final class Base {
         public static final int talon_id = 6328;
         public static final SmartData<Double> speed = new SmartData<Double>("Base Speed", 2.54);
-        public static final double kp = 0;
-        public static final double ki = 0;
-        public static final double kd = 0;
-        setpoint_velocity = 0;
-        stop_velocity = 0
     }
+
+    public static final double kp = 0;
+    public static final double ki = 0;
+    public static final double kd = 0;
+    public static double setpoint_velocity = 0;
+    public static double stop_velocity = 0;
 }
