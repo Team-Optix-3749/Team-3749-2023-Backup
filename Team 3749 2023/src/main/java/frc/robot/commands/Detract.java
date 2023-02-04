@@ -3,10 +3,10 @@ package frc.robot.commands.elevator;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-public class Extend extends CommandBase {
+public class Detract extends CommandBase {
     private final Elevator m_elevator;
 
-    public Extend(Elevator elevator) {
+    public Detract(Elevator elevator) {
         m_elevator = elevator;
         addRequirements(elevator);
     }
@@ -17,7 +17,7 @@ public class Extend extends CommandBase {
 
     @Override
     public void execute() {
-        m_elevator.setSpeed(Constants.setpoint_velocity);
+        m_elevator.setSpeed(-Constants.setpoint_velocity);
     }
 
     @Override
