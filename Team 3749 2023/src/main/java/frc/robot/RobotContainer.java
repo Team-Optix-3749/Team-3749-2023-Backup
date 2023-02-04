@@ -11,6 +11,13 @@ import frc.robot.commands.Extend;
 import frc.robot.subsystems.Elevator;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
+/***
+ * @author Anusha Khobare
+ * @author Ryan R McWeeny
+ * 
+ *     Robot Container uses Xbox and POV to add button bindings for the commands. Button A is binded to the Extend Command and
+ *     Button B is binded to the Detract Command.
+ */
 
 public class RobotContainer {
 
@@ -21,11 +28,7 @@ public class RobotContainer {
   private final POV pilotPOV = new POV(pilot);
   private final POV operatorPOV = new POV(operator);
 
-  Elevator elevator; 
-
-  // Subsystems
-
-  // Commands
+  Elevator elevator;  
 
   public RobotContainer() {
     configureButtonBindings();
@@ -35,8 +38,10 @@ public class RobotContainer {
   private void configureDefaultCommands() {}
 
   private void configureButtonBindings() {
-    pilot.a().whileTrue(new Extend(elevator));
-    pilot.b().whileTrue(new Detract(elevator));
+    // Note that previous button bindings such as .whileHeld() have been replaced by .whileTrue()
+    pilot.a().whileTrue(new Extend(elevator)); //while button A remains held continue to run Extend command
+    pilot.b().whileTrue(new Detract(elevator)); //while button B remains held continue to run Detract command
+    //when neither button is held, do nothing and wait for button press
   }
 
   public Command getAutonomousCommand() {
