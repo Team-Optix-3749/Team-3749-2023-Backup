@@ -12,7 +12,7 @@ import frc.robot.utils.Constants;
  * @author Ryan R McWeeny
  *     Description Needed
  */
-public class Arm {
+public class Arm extends SubsystemBase{
     private WPI_TalonFX talon = new WPI_TalonFX(Constants.Base.talon_id); //intialize motor
     private RelativeEncoder talon_encoder; //intialize encoder
     private final PIDController elevatorController = new PIDController(Constants.kp, Constants.ki, Constants.kd); //intiaize PID Controller

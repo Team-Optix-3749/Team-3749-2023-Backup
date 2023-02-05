@@ -1,23 +1,23 @@
 package frc.robot.commands;
 
+import frc.robot.utils.*;
 import frc.robot.subsystems.*;
-import frc.robot.utils.Constants;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /***
  * @author Ryan McWeeny
+ * @author Anusha Khobare
  * 
- *         Rotates a motor that controls the arm
+ *         Command uses PID controller to spin motor that extends elevator
  */
 
-public class RotateUp {
-    @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
+public class RotateUp extends CommandBase {
+    // declares Elevator subsystem
+    private final Arm m_arm;
 
-    Base base = new Base();
-
-    // Initializes the BaseCommand
+    // Initializes the Extend command
     public RotateUp(Arm arm) {
-        this.arm = arm;
+        m_arm = arm;
         addRequirements(arm);
     }
 
@@ -29,15 +29,17 @@ public class RotateUp {
     // Run every 20 ms
     @Override
     public void execute() {
-        base.set(Constants.arm.speed.get().doubleValue());
+        // refences PID controller in Elevator subsystem
+        m_arm.setSpeed(Constants.setpoint_velocity);
     }
 
     // Run on command finish
     @Override
     public void end(boolean interrupted) {
+        m_arm.setSpeed(Constants.stop_velocity); //set speed to 0 to stop
     }
 
-    // Returns true when the command should end
+    // Returns true when the command should end.
     @Override
     public boolean isFinished() {
         return false;
