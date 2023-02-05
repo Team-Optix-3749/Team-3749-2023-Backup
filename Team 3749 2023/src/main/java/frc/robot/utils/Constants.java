@@ -11,9 +11,9 @@ public final class Constants {
         public static final int talon_id = 3749;
         public static final SmartData<Double> speed = new SmartData<Double>("Base Speed", 2.54);
     }
-    public static final kd = 0;
-    public static final kp = 0;
-    public static final ki = 0;
+    public static final double kd = 0;
+    public static final double kp = 0;
+    public static final double ki = 0;
     public static double setpoint_velocity = 0;
     public static double stop_velocity = 0;
 }
