@@ -29,7 +29,10 @@ public class RobotContainer {
 
   private void configureDefaultCommands() {}
 
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    pilot.a().whileTrue(new OpenCommand(claw));
+    pilot.b().whileTrue(new CloseCommand(claw));
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
