@@ -6,6 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.commands.RotateDown;
+import frc.robot.commands.RotateUp;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
 
@@ -29,7 +31,10 @@ public class RobotContainer {
 
   private void configureDefaultCommands() {}
 
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    pilot.a().whileTrue(new RotateDown(null));
+    pilot.b().whileTrue(new RotateUp(null));
+  }
 
   public Command getAutonomousCommand() {
     return Commands.print("No autonomous command configured");
