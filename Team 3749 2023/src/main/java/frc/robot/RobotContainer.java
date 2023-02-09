@@ -10,7 +10,14 @@ import frc.robot.commands.RotateDown;
 import frc.robot.commands.RotateUp;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
-
+/***
+ * @author Anusha Khobare
+ * @author Ryan R McWeeny
+ *     Sets button bindings for button A and button B on an Xbox Controller.
+ *     Button A runs the RotateDown Command (causing the arm to rotate down) while held.
+ *     Button B runs the RotateUp Command (causing the arm to rotate up) while held.
+ *     When buttons are released or niether button is pressed, niether command runs.
+ */
 public class RobotContainer {
 
   // Controllers
@@ -20,9 +27,7 @@ public class RobotContainer {
   private final POV pilotPOV = new POV(pilot);
   private final POV operatorPOV = new POV(operator);
 
-  // Subsystems
-
-  // Commands
+  Arm arm;
 
   public RobotContainer() {
     configureButtonBindings();
@@ -32,8 +37,8 @@ public class RobotContainer {
   private void configureDefaultCommands() {}
 
   private void configureButtonBindings() {
-    pilot.a().whileTrue(new RotateDown(null));
-    pilot.b().whileTrue(new RotateUp(null));
+    pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
+    pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
   }
 
   public Command getAutonomousCommand() {

@@ -1,4 +1,3 @@
-
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.revrobotics.RelativeEncoder;
@@ -10,7 +9,7 @@ import frc.robot.utils.Constants;
 /***
  * @author Anusha Khobare
  * @author Ryan R McWeeny
- *     Description Needed
+ *     Arm.java intializes talon motor, talon motor encoder, and PID Controller. setSpeed() uses speed PID. 
  */
 public class Arm extends SubsystemBase{
     private WPI_TalonFX talon = new WPI_TalonFX(Constants.Base.talon_id); //intialize motor

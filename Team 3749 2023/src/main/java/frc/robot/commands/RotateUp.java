@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
  * @author Ryan McWeeny
  * @author Anusha Khobare
  * 
- *         Command uses PID controller to spin motor that extends elevator
+ *         Command uses PID controller to spin motor that rotates arm up
  */
 
 public class RotateUp extends CommandBase {
