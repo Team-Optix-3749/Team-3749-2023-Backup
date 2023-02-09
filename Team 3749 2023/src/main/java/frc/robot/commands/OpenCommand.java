@@ -1,9 +1,13 @@
-
 package frc.robot.commands;
 
 import frc.robot.utils.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+/***
+ * @author Anusha Khobare
+ * 
+ * OpenCommand.java runs the motor forwards with the setSpeed() function and stops when the function is done
+ */
 public class OpenCommand extends CommandBase{
     private Claw m_claw;
     public OpenCommand(Claw claw){
@@ -15,7 +19,7 @@ public class OpenCommand extends CommandBase{
     @Override
     public void execute() {
         // refences PID controller in Elevator subsystem
-        m_claw.setSpeed(Constants.setpoint_velocity);}
+        m_claw.setSpeed(Constants.setpoint_velocity);} //run forwards
         @Override
     public void end(boolean interrupted) {
         m_claw.setSpeed(Constants.stop_velocity); //set speed to 0 to stop
