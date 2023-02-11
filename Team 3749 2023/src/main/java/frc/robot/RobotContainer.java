@@ -37,8 +37,14 @@ public class RobotContainer {
   private void configureDefaultCommands() {}
 
   private void configureButtonBindings() {
-    pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
-    pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
+    //pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
+    //pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
+    pilot.a().whileTrue(
+      () -> arm.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+    );
+    pilot.b().whileTrue(
+      () -> arm.set(-Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+    );
   }
 
   public Command getAutonomousCommand() {
