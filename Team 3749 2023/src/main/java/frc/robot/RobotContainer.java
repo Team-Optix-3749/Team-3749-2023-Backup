@@ -40,10 +40,10 @@ public class RobotContainer {
     //pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
     //pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
     pilot.a().whileTrue(
-      () -> arm.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+      () -> arm.set(Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
     );
     pilot.b().whileTrue(
-      () -> arm.set(-Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+      () -> arm.set(-Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
     );
   }
 
