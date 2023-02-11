@@ -6,8 +6,11 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.subsystems.Claw;
+import frc.robot.utils.Constants;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
+
 
 public class RobotContainer {
 
@@ -17,6 +20,8 @@ public class RobotContainer {
 
   private final POV pilotPOV = new POV(pilot);
   private final POV operatorPOV = new POV(operator);
+  
+  Claw claw;
 
   // Subsystems
 
