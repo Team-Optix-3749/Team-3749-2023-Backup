@@ -35,8 +35,8 @@ public class RobotContainer {
     pilot.a().whileTrue(
       () -> claw.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
     );
-    pilot.a().whileTrue(
-      () -> claw.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+    pilot.b().whileTrue(
+      () -> claw.set(-Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
     );
   }
 
