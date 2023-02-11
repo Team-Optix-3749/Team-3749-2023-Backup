@@ -12,4 +12,11 @@ public final class Constants {
         public static final int falcon_id = 6328;
         public static final SmartData<Double> speed = new SmartData<Double>("Base Speed", 2.54);
     }
+
+    public static final class Drivetrain {
+        public static final int frontLeftID= 0; 
+        public static final int frontRightID= 0; 
+        public static final int backLeftID= 0; 
+        public static final int backRightID= 0; 
+    }
 }

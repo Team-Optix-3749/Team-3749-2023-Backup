@@ -5,42 +5,40 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.*;
-import frc.robot.utils.Constants;
+
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
-/***
- * @author Rohin Sood
- * 
- *         Serves as a template to format commands
- */
-public class BaseCommand extends CommandBase {
+/** An example command that uses an example subsystem. */
+public class DrivetrainCommnd extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
-    Base base = new Base();
+    private final Drivetrain drive;
+    private DoubleSupplier y;
+    private DoubleSupplier x;
 
-    // Initializes the BaseCommand
-    public BaseCommand(Base base) {
-        this.base = base;
-        addRequirements(base);
+    public DrivetrainCommnd(Drivetrain drivetrain, DoubleSupplier leftY, DoubleSupplier rightX) {
+        drive = drivetrain;
+        y = leftY;
+        x = rightX;
+        addRequirements(drivetrain);
     }
 
-    // Run on command init
-    @Override 
+    @Override
     public void initialize() {
     }
 
-    // Run every 20 ms
     @Override
     public void execute() {
-        base.set(Constants.Base.speed.get().doubleValue());
+        drive.arcadeDrive(y.getAsDouble(), x.getAsDouble());
     }
 
-    // Run on command finish
     @Override
     public void end(boolean interrupted) {
     }
 
-    // Returns true when the command should end
+    // Returns true when the command should end.
     @Override
     public boolean isFinished() {
         return false;

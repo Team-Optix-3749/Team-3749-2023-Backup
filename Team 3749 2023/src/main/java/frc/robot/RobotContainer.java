@@ -1,37 +1,43 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.commands.*;
+import frc.robot.util.AutoGroups;
+import frc.robot.commands.shooter.*;
+import frc.robot.subsystems.*;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
 
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+
 public class RobotContainer {
 
-  // Controllers
-  private final Xbox pilot = new Xbox(0);
-  private final Xbox operator = new Xbox(1);
+    private final Drivetrain drivetrain = new Drivetrain();
 
-  private final POV pilotPOV = new POV(pilot);
-  private final POV operatorPOV = new POV(operator);
+    // private final Elevator m_elevator = new Elevator();
 
-  // Subsystems
+    frc.robot.utils.Xbox Pilot;
+    frc.robot.utils.Xbox Operator;
+    POV PiPOV;
+    POV OpPOV;
 
-  // Commands
+    public RobotContainer() {
+        configureButtonBindings();
+    }
 
-  public RobotContainer() {
-    configureButtonBindings();
-    configureDefaultCommands();
-  }
+    private void configureButtonBindings() {
+        Pilot = new Xbox(0);
+        Operator = new Xbox(1);
 
-  private void configureDefaultCommands() {}
+        PiPOV = new POV(new GenericHID(0));
+        OpPOV = new POV(new GenericHID(1));
 
-  private void configureButtonBindings() {}
+        drivetrain.setDefaultCommand(new DrivetrainCommnd(drivetrain, Pilot::getLeftY, Pilot::getRightX));
 
-  public Command getAutonomousCommand() {
-    return Commands.print("No autonomous command configured");
-  }  
+        // m_intake.setDefaultCommand(
+        //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));
+    }
+    
 }
+ 
