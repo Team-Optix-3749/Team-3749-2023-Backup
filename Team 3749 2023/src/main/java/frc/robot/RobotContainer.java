@@ -9,8 +9,10 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.Detract;
 import frc.robot.commands.Extend;
 import frc.robot.subsystems.Elevator;
+import frc.robot.utils.Constants;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
+
 /***
  * @author Anusha Khobare
  * @author Ryan R McWeeny
@@ -39,15 +41,15 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
     // Note that previous button bindings such as .whileHeld() have been replaced by .whileTrue()
-    //pilot.a().whileTrue(new Extend(elevator)); //while button A remains held continue to run Extend command
-    //pilot.b().whileTrue(new Detract(elevator)); //while button B remains held continue to run Detract command
+    pilot.a().whileTrue(new Extend(elevator)); //while button A remains held continue to run Extend command
+    pilot.b().whileTrue(new Detract(elevator)); //while button B remains held continue to run Detract command
     //when neither button is held, do nothing and wait for button press
-    pilot.a().whileTrue(
-      () -> elevator.set(Constants.setpoint_velocity), () -> elevator.set(Constants.stop_velocity), claw
-    );
-    pilot.b().whileTrue(
-      () -> elevator.set(-Constants.setpoint_velocity), () -> elevator.set(Constants.stop_velocity), claw
-    );
+    // pilot.a().whileTrue(
+    //   () -> elevator.set(Constants.setpoint_velocity), () -> elevator.set(0), elevator
+    // );
+    // pilot.b().whileTrue(
+    //   () -> elevator.set(-Constants.setpoint_velocity), () -> elevator.set(0), elevator
+    // );
   }
 
   public Command getAutonomousCommand() {
