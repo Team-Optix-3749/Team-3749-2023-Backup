@@ -30,8 +30,14 @@ public class RobotContainer {
   private void configureDefaultCommands() {}
 
   private void configureButtonBindings() {
-    pilot.a().whileTrue(new OpenCommand(claw));
-    pilot.b().whileTrue(new CloseCommand(claw));
+    //pilot.a().whileTrue(new OpenCommand(claw));
+    //pilot.b().whileTrue(new CloseCommand(claw));
+    pilot.a().whileTrue(
+      () -> claw.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+    );
+    pilot.a().whileTrue(
+      () -> claw.set(Constants.setpoint_velocity), () -> claw.set(Constants.stop_velocity), claw
+    );
   }
 
   public Command getAutonomousCommand() {
