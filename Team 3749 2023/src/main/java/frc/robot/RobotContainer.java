@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import frc.robot.commands.RotateDown;
 import frc.robot.commands.RotateUp;
+import frc.robot.subsystems.Arm;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
 /***
@@ -37,14 +38,14 @@ public class RobotContainer {
   private void configureDefaultCommands() {}
 
   private void configureButtonBindings() {
-    //pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
-    //pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
-    pilot.a().whileTrue(
-      () -> arm.set(Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
-    );
-    pilot.b().whileTrue(
-      () -> arm.set(-Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
-    );
+    pilot.a().whileTrue(new RotateDown(arm)); //while button a is held run RotateDown
+    pilot.b().whileTrue(new RotateUp(arm)); //while button b is held run RotateUp
+    // pilot.a().whileTrue(
+    //   () -> arm.set(Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
+    // );
+    // pilot.b().whileTrue(
+    //   () -> arm.set(-Constants.setpoint_velocity), () -> arm.set(Constants.stop_velocity), arm
+    // );
   }
 
   public Command getAutonomousCommand() {
