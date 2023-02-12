@@ -7,6 +7,7 @@ import frc.robot.utils.Xbox;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 
 public class RobotContainer {
@@ -36,6 +37,8 @@ public class RobotContainer {
         // m_intake.setDefaultCommand(
         //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));
     }
-    
+    public Command getAutonomousCommand() {
+        return Commands.print("No autonomous command configured");
+  }      
 }
  
