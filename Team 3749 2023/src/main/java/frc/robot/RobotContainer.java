@@ -1,8 +1,6 @@
 package frc.robot;
 
 import frc.robot.commands.*;
-import frc.robot.util.AutoGroups;
-import frc.robot.commands.shooter.*;
 import frc.robot.subsystems.*;
 import frc.robot.utils.POV;
 import frc.robot.utils.Xbox;
