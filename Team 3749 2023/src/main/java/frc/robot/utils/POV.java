@@ -26,8 +26,8 @@ public class POV {
     private POVButton leftButton; // 270 degrees
     private POVButton upLeftButton; // 315 degrees
 
-    public POV(GenericHID hid) {
-        this(hid, 0);
+    public POV(Xbox pilot) {
+        this(pilot, 0);
     }
 
     public POV(GenericHID hid, int povNumber) {
