@@ -19,4 +19,8 @@ public final class Constants {
         public static final int backLeftID= 13; 
         public static final int backRightID= 11; 
     }
+    public static class VisionConstants {
+        public static final int apriltag_pipeline_index = 0;
+        public static final int reflective_tape_pipeline_index = 1;
+      }
 }
