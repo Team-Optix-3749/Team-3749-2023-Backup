@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
 
     private final Drivetrain drivetrain = new Drivetrain();
-
+    private final Vision vision = new Vision();
     // private final Elevator m_elevator = new Elevator();
 
     frc.robot.utils.Xbox Pilot;

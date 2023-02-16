@@ -8,6 +8,7 @@ import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
 import org.photonvision.PhotonPoseEstimator.PoseStrategy;
+import org.photonvision.common.hardware.VisionLEDMode;
 import org.photonvision.targeting.PhotonPipelineResult;
 import org.photonvision.targeting.PhotonTrackedTarget;
 
@@ -65,7 +66,8 @@ public class AprilTagGetters {
     }
     
 
-    public static double[] getAprilTagX(PhotonCamera camera) {
+    public static double[] getAprilTagX() {
+        camera.setLED(VisionLEDMode.kOff);
         camera.setPipelineIndex(VisionConstants.apriltag_pipeline_index);
         double target_x = 0.0;
         double target_fiducial_id = 0;
