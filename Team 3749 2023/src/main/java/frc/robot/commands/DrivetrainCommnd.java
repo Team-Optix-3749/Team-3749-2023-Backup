@@ -31,7 +31,7 @@ public class DrivetrainCommnd extends CommandBase {
 
     @Override
     public void execute() {
-        drive.arcadeDrive(y.getAsDouble(), x.getAsDouble());
+        drive.arcadeDrive(y.getAsDouble()/1.5, x.getAsDouble()/1.5);
     }
 
     @Override
