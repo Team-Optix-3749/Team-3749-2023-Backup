@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
 
     private final Drivetrain drivetrain = new Drivetrain();
-    private final Vision vision = new Vision();
+
     // private final Elevator m_elevator = new Elevator();
 
     frc.robot.utils.Xbox Pilot;
@@ -32,7 +32,7 @@ public class RobotContainer {
         PiPOV = new POV(new GenericHID(0));
         OpPOV = new POV(new GenericHID(1));
 
-        drivetrain.setDefaultCommand(new DrivetrainCommnd(drivetrain, Pilot::getLeftY, Pilot::getRightX));
+        drivetrain.setDefaultCommand(new LimelightFollow(drivetrain, Pilot::getLeftY));
 
         // m_intake.setDefaultCommand(
         //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));

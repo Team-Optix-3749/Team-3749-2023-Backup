@@ -71,7 +71,7 @@ public class Vision extends SubsystemBase {
 
   @Override
   public void periodic() {
-    System.out.println(AprilTagGetters.getAprilTagX());
+    System.out.println(AprilTagGetters.getXAndSize());
   }
 
   @Override
