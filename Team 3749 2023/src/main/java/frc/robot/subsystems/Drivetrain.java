@@ -9,7 +9,6 @@ import frc.robot.utils.Constants;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import java.lang.Math;
-import frc.robot.utils.*;
 
 public class Drivetrain extends SubsystemBase{
   public WPI_TalonFX frontLeft = new WPI_TalonFX(Constants.Drivetrain.frontLeftID);
@@ -18,14 +17,14 @@ public class Drivetrain extends SubsystemBase{
   public WPI_TalonFX backLeft = new WPI_TalonFX(Constants.Drivetrain.backLeftID);
   public WPI_TalonFX backRight = new WPI_TalonFX(Constants.Drivetrain.backRightID);
 
-  public MotorControllerGroup leftMotorControl = new MotorControllerGroup(frontLeft, backLeft);
-  public MotorControllerGroup rightMotorControl = new MotorControllerGroup(frontRight, backRight);
+  public MotorControllerGroup leftMotorControl = new MotorControllerGroup(backLeft, frontLeft);
+  public MotorControllerGroup rightMotorControl = new MotorControllerGroup(backRight, frontRight);
 
   public DifferentialDrive differentialDrive = new DifferentialDrive(leftMotorControl, rightMotorControl);
 
   //private final Gyro gyro = new AHRS();
   public Drivetrain (){
-    leftMotorControl.setInverted(true);
+    rightMotorControl.setInverted(true);
   }
 
   
@@ -36,9 +35,7 @@ public class Drivetrain extends SubsystemBase{
     public void stop() {
     differentialDrive.arcadeDrive(0, 0);
   }
-  public void periodic(){
-    LimelightPhotonGetters.getX();
-  }
+  
 }
 
 
