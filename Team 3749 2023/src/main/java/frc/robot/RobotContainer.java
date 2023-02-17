@@ -32,7 +32,7 @@ public class RobotContainer {
         PiPOV = new POV(new GenericHID(0));
         OpPOV = new POV(new GenericHID(1));
 
-        drivetrain.setDefaultCommand(new DrivetrainCommnd(drivetrain, Pilot::getLeftY, Pilot::getRightX));
+        drivetrain.setDefaultCommand(new LimelightFollow(drivetrain, Pilot::getLeftY));
 
         // m_intake.setDefaultCommand(
         //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));

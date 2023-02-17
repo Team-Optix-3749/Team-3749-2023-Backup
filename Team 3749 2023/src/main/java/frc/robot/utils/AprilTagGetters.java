@@ -65,23 +65,26 @@ public class AprilTagGetters {
     }
     
 
-    public static double[] getAprilTagX(PhotonCamera camera) {
+    public static double[] getXAndSize() {
         camera.setPipelineIndex(VisionConstants.apriltag_pipeline_index);
         double target_x = 0.0;
+        double target_size = 0.0;
         double target_fiducial_id = 0;
-        double[] x_and_id = { target_fiducial_id, target_x };
+        double[] x_and_id = { target_fiducial_id, target_x, target_size };
         PhotonPipelineResult result = camera.getLatestResult(); // run this code in perodic (every 20 ms)
         if (result.hasTargets()) {
             PhotonTrackedTarget target = result.getBestTarget();
             ; // if else statement for 22code above
             target_x = target.getYaw();
+            target_size = target.getArea();
             target_fiducial_id = target.getFiducialId();
             x_and_id[0] = target_fiducial_id;
-
             x_and_id[1] = target_x;
+            x_and_id[2] = target_size;
         }
         return x_and_id;
     }
+
     // double target_x = target.getYaw(); // Get the yaw position of target
     // double target_y = target.getPitch(); //Get pitch of target
     // double area = target.getArea(); //Get area of target

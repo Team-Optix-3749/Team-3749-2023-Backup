@@ -5,23 +5,26 @@
 package frc.robot.commands;
 
 import frc.robot.subsystems.*;
+import frc.robot.utils.*;
 
+import java.lang.annotation.Target;
 import java.util.function.DoubleSupplier;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class LimelightFollowCommand extends CommandBase {
+public class LimelightFollow extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
     private final Drivetrain drive;
-    private DoubleSupplier y;
-    private DoubleSupplier x;
+    private DoubleSupplier speed;
+    private double[] april_lst;
+    private double target_size;
+    private double target_x;
 
-    public LimelightFollowCommand(Drivetrain drivetrain, DoubleSupplier leftY, DoubleSupplier rightX) {
+    public LimelightFollow(Drivetrain drivetrain, DoubleSupplier speed) {
         drive = drivetrain;
-        y = leftY;
-        x = rightX;
+        this.speed = speed;
         addRequirements(drivetrain);
     }
 
@@ -31,7 +34,10 @@ public class LimelightFollowCommand extends CommandBase {
 
     @Override
     public void execute() {
-        drive.arcadeDrive(y.getAsDouble(), x.getAsDouble());
+        april_lst = AprilTagGetters.getXAndSize();
+        target_x = april_lst[1];
+        target_size = april_lst[2];
+        System.out.println(target_x);
     }
 
     @Override
