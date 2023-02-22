@@ -14,7 +14,6 @@ public class RobotContainer {
 
     private final Drivetrain drivetrain = new Drivetrain();
 
-
     frc.robot.utils.Xbox Pilot;
     frc.robot.utils.Xbox Operator;
     POV PiPOV;
@@ -31,8 +30,8 @@ public class RobotContainer {
         PiPOV = new POV(new GenericHID(0));
         OpPOV = new POV(new GenericHID(1));
 
-        drivetrain.setDefaultCommand(new LimelightFollow(drivetrain, Pilot::getLeftY));
-
+        Pilot.a().whileTrue(new ReflectiveAlign(drivetrain, Pilot::getLeftY));
+        Pilot.b().whileTrue(new AprilAlign(drivetrain, Pilot::getLeftY));
         // m_intake.setDefaultCommand(
         //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));
     }

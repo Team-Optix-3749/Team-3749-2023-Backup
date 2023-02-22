@@ -13,16 +13,16 @@ import java.util.function.DoubleSupplier;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 /** An example command that uses an example subsystem. */
-public class LimelightFollow extends CommandBase {
+public class ReflectiveAlign extends CommandBase {
     @SuppressWarnings({ "PMD.UnusedPrivateField", "PMD.SingularField" })
 
     private final Drivetrain drive;
     private DoubleSupplier speed;
-    private double[] april_lst;
-    private double target_size;
-    private double target_x;
+    private double reflective_x;
+    private double middle_x;
+    private double x_diff;
 
-    public LimelightFollow(Drivetrain drivetrain, DoubleSupplier speed) {
+    public ReflectiveAlign(Drivetrain drivetrain, DoubleSupplier speed) {
         drive = drivetrain;
         this.speed = speed;
         addRequirements(drivetrain);
@@ -34,10 +34,10 @@ public class LimelightFollow extends CommandBase {
 
     @Override
     public void execute() {
-        april_lst = AprilTagGetters.getXAndSize();
-        target_x = april_lst[1];
-        target_size = april_lst[2];
-        System.out.println(target_x);
+        reflective_x = LimelightPhotonGetters.getX();
+        middle_x = Constants.VisionConstants.limelight_pxls / 2;
+        x_diff = reflective_x - middle_x;
+        drive.arcadeDrive(speed.getAsDouble(), x_diff/middle_x);
     }
 
     @Override
