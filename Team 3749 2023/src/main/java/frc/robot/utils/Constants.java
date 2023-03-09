@@ -15,8 +15,13 @@ public final class Constants {
 
     public static final class Drivetrain {
         public static final int frontLeftID= 14; 
-        public static final int frontRightID= 12; 
-        public static final int backLeftID= 13; 
+        public static final int frontRightID= 13; 
+        public static final int backLeftID= 12; 
         public static final int backRightID= 11; 
     }
+    public static class VisionConstants {
+        public static final int apriltag_pipeline_index = 0;
+        public static final int reflective_tape_pipeline_index = 1;
+        public static final double limelight_pxls = 1920;
+      }
 }

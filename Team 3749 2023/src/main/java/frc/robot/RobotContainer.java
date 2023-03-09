@@ -26,13 +26,13 @@ public class RobotContainer {
     }
 
     private void configureButtonBindings() {
-        Pilot = new Xbox(0);
-        Operator = new Xbox(1);
+        Pilot = new Xbox(1);
+        Operator = new Xbox(0);
 
         PiPOV = new POV(new GenericHID(0));
         OpPOV = new POV(new GenericHID(1));
 
-        drivetrain.setDefaultCommand(new DrivetrainCommnd(drivetrain, Pilot::getLeftY, Pilot::getRightX));
+        drivetrain.setDefaultCommand(new DrivetrainCommnd(drivetrain, Pilot::getLeftX, Pilot::getRightY));
 
         // m_intake.setDefaultCommand(
         //     new Input(m_intake, Pilot::getLeftTrigger, Pilot::getRightTrigger));
